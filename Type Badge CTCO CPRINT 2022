@@ -1,0 +1,26 @@
+{% assign activity_optgroup = guest.guest_metadata.activity_optgroup %}
+{% assign type_cat = guest.guest_category.traits.type_cat %}
+{% assign type_badge2 = "" %}
+
+{% if type_cat == "cprint" %}
+	{% if activity_optgroup == "Conseil / Conception / Création" or activity_optgroup == "Marque / Commerce / Administration" or activity_optgroup == "Autres" %}
+		{% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+      {% assign type_badge2 = "C!Print Premium" %}
+    {% else %}
+      {% assign type_badge2 = "C!Print Visiteur" %}
+    {% endif %}
+  {% else %}
+    {% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+      {% assign type_badge2 = "CTCO / C!Print Premium" %}
+    {% else %}
+      {% assign type_badge2 = "CTCO / C!Print Visiteur" %}
+    {% endif %}	
+  {% endif %}
+{% elsif type_cat == "ctco" %}
+  {% if guest.guest_metadata.premium_ctco == "true" or guest.guest_metadata.premium_ctco2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+    {% assign type_badge2 = "CTCO / C!Print Premium" %}
+  {% else %}
+    {% assign type_badge2 = "CTCO / C!Print Visiteur" %}
+  {% endif %}
+{% endif %}
+{{ type_badge2 }}
