@@ -1,0 +1,56 @@
+{% assign activity_optgroup = guest.guest_metadata.activity_optgroup %}
+{% assign type_cat = guest.guest_category.traits.type_cat %}
+{% assign 2fpco = guest.guest_metadata.2fpco %}
+
+
+
+     {% if 2fpco == "true" %}
+        {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-Newwave-2FPCO-CTCO2022-fr.jpg" %}
+      {% else %}
+        {% if guest.locale == "en" %}
+          {% if type_cat == "cprint" %}
+            {% if activity_optgroup == "Conseil / Conception / Création" or activity_optgroup == "Marque / Commerce / Administration" or activity_optgroup == "Autres" %}
+              {% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-C!print2022-eng.jpg" %}
+              {% else %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-C!print2022-eng.jpg" %}
+              {% endif %}
+            {% else %}
+              {% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-Exaprint-CTCO2022-eng.jpg" %}
+              {% else %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-Exaprint-CTCO2022-eng.jpg" %}
+              {% endif %}
+            {% endif %}
+          {% elsif type_cat == "ctco" %}
+            {% if guest.guest_metadata.premium_ctco == "true" or guest.guest_metadata.premium_ctco2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+              {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-Newwave-CTCO2022-eng.jpg" %}
+            {% else %}
+              {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-Newwave-CTCO2022-eng.jpg" %}
+            {% endif %}
+          {% endif %}
+        {% else %}
+          {% if type_cat == "cprint" %}
+            {% if activity_optgroup == "Conseil / Conception / Création" or activity_optgroup == "Marque / Commerce / Administration" or activity_optgroup == "Autres" %}
+              {% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-C!print2022-fr.jpg"%}
+              {% else %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-C!print2022-fr.jpg"%}
+              {% endif %}
+            {% else %}
+              {% if guest.guest_metadata.premium_cpl == "true" or guest.guest_metadata.premium_cpl2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-Exaprint-CTCO2022-fr.jpg" %}
+              {% else %}
+                {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-Exaprint-CTCO2022-fr.jpg" %}
+              {% endif %}
+            {% endif %}
+          {% elsif type_cat == "ctco" %}
+            {% if guest.guest_metadata.premium_ctco == "true" or guest.guest_metadata.premium_ctco2 == "true" or guest.guest_metadata.code_promo contains "PR22" or guest.payment_promo_code contains "PR22" %}
+              {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-premium-Newwave-CTCO2022-fr.jpg" %}
+            {% else %}
+              {% assign badge_url_3 = "https://s3.eu-west-1.amazonaws.com/assets.applidget.com/templates/screenshots/Badges+CTCO/Badge-visiteur-Newwave-CTCO2022-fr.jpg" %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      {{ badge_url_3 }}
