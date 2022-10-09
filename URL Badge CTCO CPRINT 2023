@@ -1,0 +1,43 @@
+{% if guest.2fpco == "true" %}
+	Badge-premium-CTCO2023-2fpco-fr.jpg
+{% elsif guest.type_de_badge == "C!Print Premium" %}		
+	{% if guest.locale == "en" %}
+		Badge-premium-CPrint2023-eng.jpg
+	{% else %}
+		Badge-premium-CPrint2023-fr.jpg			
+	{% endif %}
+{% elsif guest.type_de_badge == "C!Print Visiteur" %}
+		{% if guest.locale == "en" %}
+			Badge-visiteur-CPrint2023-eng.jpg
+		{% else %}
+			Badge-visiteur-CPrint2023-fr.jpg			
+		{% endif %}
+{% elsif guest.type_de_badge == "CTCO / C!Print Premium" %}	
+		{% if guest.guest_category.traits.type_cat == "cprint" %}
+			{% if guest.locale == "en" %}
+				Badge-premium-CPrint2023-eng.jpg
+			{% else %}
+				Badge-premium-CPrint2023-fr.jpg			
+			{% endif %}
+		{% else %}
+			{% if guest.locale == "en" %}
+				Badge-premium-CTCO2023-eng-new-wave.jpg	
+			{% else %}
+				Badge-premium-CTCO2023-fr-new-wave.jpg	
+			{% endif %}
+		{% endif %}
+{% elsif guest.type_de_badge == "CTCO / C!Print Visiteur" %}	
+		{% if guest.guest_category.traits.type_cat == "cprint" %}
+			{% if guest.locale == "en" %}
+				Badge-visiteur-CTCO2023-eng.jpg
+			{% else %}
+				Badge-visiteur-CTCO2023-fr.jpg			
+			{% endif %}
+		{% else %}
+			{% if guest.locale == "en" %}
+				Badge-visiteur-CTCO2023-eng-new-wave.jpg	
+			{% else %}
+				Badge-visiteur-CTCO2023-fr-new-wave.jpg	
+			{% endif %}
+		{% endif %}
+{% endif %}
